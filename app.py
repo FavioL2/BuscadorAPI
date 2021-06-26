@@ -55,7 +55,10 @@ def home():
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
             if precio is None:
-                scrapping(url,tienda)
+                if not(tagPrecio ==" " or entradaPrecio == " " or idPrecio == " "):
+                    scrapping(url,tienda)
+                else:
+                    return 0
             else:
                 precio = (precio.text).split()                
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
