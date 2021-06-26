@@ -82,6 +82,5 @@ def home():
                 continue
     #print(type(data))
     resultado = json.dumps(data,indent = 4)
-    response = jsonify(data)
-    response.headers.add("Access-Control-Allow-Origin", "*")
+    response = jsonify(data)    
     return response
