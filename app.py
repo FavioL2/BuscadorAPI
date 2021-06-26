@@ -1,4 +1,3 @@
-from _typeshed import NoneType
 import json
 from bs4 import BeautifulSoup
 from flask_cors.core import ensure_iterable
