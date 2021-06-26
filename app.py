@@ -50,7 +50,10 @@ def home():
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
             if precio is None:
-                precio = (precio.text).split()
+                print(tagPrecio)
+                return 0
+            else:
+                precio = (precio.text).split()                
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
                 "url":url,
