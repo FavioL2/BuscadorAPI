@@ -45,13 +45,13 @@ cors = CORS(app)
 @cross_origin()
 def home():
     calzado = request.args['calzado']
-    print(type(calzado))
 #estos son los datos de acceso al api de bing
     subscriptionKey = "5e0ddbf7e50c43ec9609c3d5a1311478"
     customConfigId = "9f8b2731-9e63-40b6-8e3f-0341d2429efa"
 
     #la palabra que busca el usuario
-    searchTerm = calzado
+    searchTerm = str(calzado)
+    print(searchTerm)
     #acá armamos la solicitud al api con los datos
     url = 'https://api.bing.microsoft.com/v7.0/custom/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId + "&mkt=en-MX&count=12"
     #aquí ya hacemos el request
