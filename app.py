@@ -4,7 +4,7 @@ import requests
 import flask
 from flask import request, jsonify 
 from flask_cors import cross_origin, CORS
-
+import pdb
 #función scrap
 
 app = flask.Flask(__name__)
@@ -27,7 +27,7 @@ def home():
     tenis = r.json()#lo paso a Json para manejarlo más facil
     #acá recorremos el json y así tomamos el snippet de cada objeto
     def scrapping(url,tienda):
-        tagPrecio=" "; ruta=" ";idPrecio=" ";idNombre=" ";tagNombre=" ";entradaPrecio=""
+        tagPrecio=" "; idPrecio=" ";idNombre=" ";tagNombre=" ";entradaPrecio=""
         fp = requests.get(url)    
         if fp.status_code == 404:
             return 0
@@ -57,8 +57,9 @@ def home():
                 "precio":precio[0]
             }
         except NameError:
-            print(NameError)
-            print(tagPrecio + " " + entradaPrecio + " " + idPrecio)
+            pdb.set_trace()
+            print(tagPrecio)
+            print(NameError) 
             return 0
         
     # print(tenis)
