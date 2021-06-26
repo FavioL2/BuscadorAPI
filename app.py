@@ -48,7 +48,9 @@ def home():
             ruta="https://www.coppel.com"
             idPrecio="price";idNombre="main_header"    
         try:
-            precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio}).text).split())
+            precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
+            if precio is None:
+                precio = (precio.text).split()
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
                 "url":url,
