@@ -55,7 +55,8 @@ def home():
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
             while(precio is None):
-                precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))            
+                precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
+                print(tagPrecio+ " "+ entradaPrecio + " " +idPrecio )           
             precio = (precio.text).split()                
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
