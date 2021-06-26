@@ -36,6 +36,7 @@ def scrapping(url,tienda):
             }
         except NameError:
             print(NameError)
+            print(tagPrecio + " " + entradaPrecio + " " + idPrecio)
             return 0
         
 app = flask.Flask(__name__)
