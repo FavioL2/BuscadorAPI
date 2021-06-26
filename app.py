@@ -21,7 +21,7 @@ def home():
     searchTerm = str(calzado)
     print(searchTerm)
     #acá armamos la solicitud al api con los datos
-    url = 'https://api.bing.microsoft.com/v7.0/custom/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId + "&mkt=en-MX&count=8"
+    url = 'https://api.bing.microsoft.com/v7.0/custom/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId + "&mkt=en-MX&count=12"
     #aquí ya hacemos el request
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     tenis = r.json()#lo paso a Json para manejarlo más facil
