@@ -54,9 +54,9 @@ def home():
             idPrecio="price";idNombre="main_header"    
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
-            if precio is None:
-                precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
-                precio = (precio.text).split()                
+            while(precio is None):
+                precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))            
+            precio = (precio.text).split()                
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
                 "url":url,
