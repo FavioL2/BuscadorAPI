@@ -1,5 +1,6 @@
 import json
 from bs4 import BeautifulSoup
+from flask_cors.core import ensure_iterable
 import requests
 import flask
 from flask import request, jsonify 
@@ -49,8 +50,9 @@ def home():
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))   
             if precio is None:
-                print(tagPrecio+" "+ entradaPrecio+" "+idPrecio )         
-            precio = (precio.text).split()
+                print(tagPrecio+" "+ entradaPrecio+" "+idPrecio )
+            else:
+                precio = (precio.text).split()
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
                 "url":url,
