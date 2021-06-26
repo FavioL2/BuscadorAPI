@@ -37,10 +37,7 @@ def scrapping(url,tienda):
             return 0
 app = flask.Flask(__name__)
 @app.route('/',methods=['GET'])
-def home(): 
-    @after_this_request
-    def add_header(response):
-        response.headers.add('Access-Control-Allow-Origin', '*')
+def home():
     calzado = request.args['calzado']
 #estos son los datos de acceso al api de bing
     subscriptionKey = "5e0ddbf7e50c43ec9609c3d5a1311478"
@@ -81,4 +78,6 @@ def home():
                 continue
     #print(type(data))
     resultado = json.dumps(data,indent = 4)
-    return jsonify(data) 
+    response = jsonify(data)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
