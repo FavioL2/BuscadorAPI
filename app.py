@@ -10,6 +10,11 @@ from flask_cors import cross_origin, CORS
 
 app = flask.Flask(__name__)
 CORS(app)
+cors = CORS(app, resources ={
+    r"/*":{
+        "origins":"*"
+    }
+})
 @app.route('/',methods=['POST','GET'])
 @cross_origin()
 def home():
@@ -64,8 +69,7 @@ def home():
             print(tagPrecio)
             print(NameError) 
             return 0
-        
-    # print(tenis)
+
     tienda =""
     imagen= ""
     data= []
@@ -93,5 +97,5 @@ def home():
                 continue
     #print(type(data))
     resultado = json.dumps(data,indent = 4)
-    response = jsonify(data)    
+    response = jsonify(data)
     return response
