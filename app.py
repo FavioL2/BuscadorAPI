@@ -4,7 +4,7 @@ import requests
 import flask
 from flask import request
 
-app = flask.app(__name__)
+app = flask.Flask(__name__)
 @app.route('/',methods=['GET'])
 def home(): 
     calzado = request.args['calzado']
