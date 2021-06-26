@@ -1,6 +1,7 @@
 import json
 from bs4 import BeautifulSoup
 import requests
+import flask
 from flask import request
 
 app = flask.app(__name__)
