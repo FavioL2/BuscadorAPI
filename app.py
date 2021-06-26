@@ -80,5 +80,5 @@ def home():
             else:
                 continue
     #print(type(data))
-    resultado = json.dumps(data,indent = 4)
-    return resultado
+    # resultado = json.dumps(data,indent = 4)
+    return data
