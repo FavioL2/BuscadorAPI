@@ -44,7 +44,7 @@ cors = CORS(app)
 @cross_origin()
 def home():
     calzado = request.args['calzado']
-    print(calzado)
+    print(type(calzado))
 #estos son los datos de acceso al api de bing
     subscriptionKey = "5e0ddbf7e50c43ec9609c3d5a1311478"
     customConfigId = "9f8b2731-9e63-40b6-8e3f-0341d2429efa"
