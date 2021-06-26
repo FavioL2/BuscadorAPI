@@ -80,12 +80,8 @@ def home():
             tienda="coppel"
 
         url=item['url']
-        if not (tienda == " " or tienda ==""):        
-            try:
-                scrap= scrapping(url,tienda)
-            except KeyError:
-                print(url)
-            
+        if not (tienda == " " or tienda ==""):
+            scrap= scrapping(url,tienda)            
             if not type(scrap) is int:
                 if not (tienda == " " or  "amazon" in tienda):
                     if 'openGraphImage' in item:                
