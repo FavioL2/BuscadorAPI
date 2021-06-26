@@ -9,7 +9,7 @@ from flask_cors import cross_origin, CORS
 #función scrap
 
 app = flask.Flask(__name__)
-cors= CORS(app)
+CORS(app)
 @app.route('/',methods=['POST','GET'])
 @cross_origin()
 def home():
