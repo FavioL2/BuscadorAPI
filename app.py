@@ -4,7 +4,7 @@ import requests
 import flask
 from flask import request, jsonify 
 from flask_cors import cross_origin, CORS
-import pdb
+
 #función scrap
 
 app = flask.Flask(__name__)
@@ -56,8 +56,7 @@ def home():
                 "nombre":' '.join(nombre.split()),
                 "precio":precio[0]
             }
-        except NameError:
-            pdb.set_trace()
+        except NameError:            
             print(tagPrecio)
             print(NameError) 
             return 0
@@ -78,7 +77,11 @@ def home():
 
         url=item['url']
         if not (tienda == " " or tienda ==""):        
-            scrap= scrapping(url,tienda)
+            try:
+                scrap= scrapping(url,tienda)
+            except KeyError:
+                print(url)
+            
             if not type(scrap) is int:
                 if not (tienda == " " or  "amazon" in tienda):
                     if 'openGraphImage' in item:                
