@@ -54,10 +54,10 @@ def home():
             idPrecio="price";idNombre="main_header"    
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
-            while(precio is None):
-                precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
-                print(tagPrecio+ " "+ entradaPrecio + " " +idPrecio )           
-            precio = (precio.text).split()                
+            if precio is None:
+                scrapping(url,tienda)
+            else:
+                precio = (precio.text).split()                
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
                 "url":url,
