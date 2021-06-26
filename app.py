@@ -6,7 +6,27 @@ from flask import request, jsonify
 from flask_cors import cross_origin, CORS
 
 #función scrap
-def scrapping(url,tienda):
+
+app = flask.Flask(__name__)
+cors = CORS(app)
+@app.route('/',methods=['POST','GET'])
+@cross_origin()
+def home():
+    calzado = request.args['calzado']
+#estos son los datos de acceso al api de bing
+    subscriptionKey = "5e0ddbf7e50c43ec9609c3d5a1311478"
+    customConfigId = "9f8b2731-9e63-40b6-8e3f-0341d2429efa"
+
+    #la palabra que busca el usuario
+    searchTerm = str(calzado)
+    print(searchTerm)
+    #acá armamos la solicitud al api con los datos
+    url = 'https://api.bing.microsoft.com/v7.0/custom/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId + "&mkt=en-MX&count=8"
+    #aquí ya hacemos el request
+    r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
+    tenis = r.json()#lo paso a Json para manejarlo más facil
+    #acá recorremos el json y así tomamos el snippet de cada objeto
+    def scrapping(url,tienda):
         tagPrecio=" "; ruta=" ";idPrecio=" ";idNombre=" ";tagNombre=" ";entradaPrecio=""
         fp = requests.get(url)    
         if fp.status_code == 404:
@@ -27,7 +47,7 @@ def scrapping(url,tienda):
             ruta="https://www.coppel.com"
             idPrecio="price";idNombre="main_header"    
         try:        
-            precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio}).text).split())
+            precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio}).text).split())            
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
                 "url":url,
@@ -39,26 +59,7 @@ def scrapping(url,tienda):
             print(tagPrecio + " " + entradaPrecio + " " + idPrecio)
             return 0
         
-app = flask.Flask(__name__)
-cors = CORS(app)
-@app.route('/',methods=['GET'])
-@cross_origin()
-def home():
-    calzado = request.args['calzado']
-#estos son los datos de acceso al api de bing
-    subscriptionKey = "5e0ddbf7e50c43ec9609c3d5a1311478"
-    customConfigId = "9f8b2731-9e63-40b6-8e3f-0341d2429efa"
-
-    #la palabra que busca el usuario
-    searchTerm = str(calzado)
-    print(searchTerm)
-    #acá armamos la solicitud al api con los datos
-    url = 'https://api.bing.microsoft.com/v7.0/custom/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId + "&mkt=en-MX&count=8"
-    #aquí ya hacemos el request
-    r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
-    tenis = r.json()#lo paso a Json para manejarlo más facil
-    #acá recorremos el json y así tomamos el snippet de cada objeto
-    print(tenis)
+    # print(tenis)
     tienda =""
     imagen= ""
     data= []
