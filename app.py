@@ -2,7 +2,7 @@ import json
 from bs4 import BeautifulSoup
 import requests
 import flask
-from flask import request
+from flask import request,jsonify
 
 def scrapping(url,tienda):
         tagPrecio=" "; ruta=" ";idPrecio=" ";idNombre=" ";tagNombre=" ";entradaPrecio=""
@@ -38,6 +38,9 @@ def scrapping(url,tienda):
 app = flask.Flask(__name__)
 @app.route('/',methods=['GET'])
 def home(): 
+    @after_this_request
+    def add_header(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
     calzado = request.args['calzado']
 #estos son los datos de acceso al api de bing
     subscriptionKey = "5e0ddbf7e50c43ec9609c3d5a1311478"
@@ -78,4 +81,4 @@ def home():
                 continue
     #print(type(data))
     resultado = json.dumps(data,indent = 4)
-    return resultado
+    return jsonify(data) 
