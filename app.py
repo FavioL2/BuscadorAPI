@@ -46,9 +46,9 @@ def home():
             entradaPrecio="itemprop";entradasNombre="class"
             ruta="https://www.coppel.com"
             idPrecio="price";idNombre="main_header"    
-        try:        
-            precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))
-            print(tagPrecio + " " +entradaPrecio + " "+ idPrecio)
+        try:
+            print(tagPrecio + " "  + entradaPrecio + " "+ idPrecio )
+            precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))            
             precio = (precio.text).split()
             nombre = (html.find(tagNombre, {entradasNombre: idNombre}).text)
             return {
