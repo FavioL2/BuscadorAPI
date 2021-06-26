@@ -58,7 +58,7 @@ def home():
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     tenis = r.json()#lo paso a Json para manejarlo más facil
     #acá recorremos el json y así tomamos el snippet de cada objeto
-    
+    print(tenis)
     tienda =""
     imagen= ""
     data= []
