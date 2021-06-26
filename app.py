@@ -2,11 +2,14 @@ import json
 from bs4 import BeautifulSoup
 import requests
 import flask
-from flask import request,jsonify
+from flask import request, jsonify 
+from flask_cors import cross_origin, CORS
 
 
 app = flask.Flask(__name__)
+cors = CORS(app)
 @app.route('/',methods=['GET'])
+@cross_origin()
 def home():
     calzado = request.args['calzado']
 #estos son los datos de acceso al api de bing
