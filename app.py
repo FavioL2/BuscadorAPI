@@ -50,7 +50,7 @@ def home():
             idPrecio="price";idNombre="main_header"    
         try:
             precio = ((html.find(tagPrecio, {entradaPrecio: idPrecio})))   
-            if precio is NoneType:
+            if precio is None:
                 print(tagPrecio+" "+ entradaPrecio+" "+idPrecio )
             else:
                 precio = (precio.text).split()
