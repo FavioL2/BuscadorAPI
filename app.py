@@ -72,7 +72,7 @@ def home():
     tienda =""
     imagen= ""
     data= []
-    print(tenis)
+    # print(tenis)
     for item in tenis["webPages"]["value"]:
         url = "";tienda = "";imagen= "" #filtramos para no pasar páginas basura
         #esto podría ser opcional si el usuario no busca algo exacto, pero eso aún estoy pensando como implementarlo en el front
