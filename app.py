@@ -72,6 +72,7 @@ def home():
     tienda =""
     imagen= ""
     data= []
+    print(tenis)
     for item in tenis["webPages"]["value"]:
         url = "";tienda = "";imagen= "" #filtramos para no pasar páginas basura
         #esto podría ser opcional si el usuario no busca algo exacto, pero eso aún estoy pensando como implementarlo en el front
@@ -89,6 +90,7 @@ def home():
                 if not (tienda == " " or  "amazon" in tienda):
                     if 'openGraphImage' in item:                
                         imagen= item['openGraphImage']['contentUrl']
+                        print(item['openGraphImage']['contentUrl'])
                         scrap['imagen'] = imagen
                 scrap['tienda']= tienda
                 data.append(scrap)
